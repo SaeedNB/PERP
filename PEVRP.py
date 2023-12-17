@@ -7,7 +7,9 @@ from multiprocessing import Pool
 import numpy as np
 from search_array_jit import find_first_occurrence
 from pympler import asizeof
+import sys, getopt
 
+#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
 class PEVRP:
     def __init__(self):
         with open("../../graphs/new_graph_below_175_upper_0_with_points_whole_graph.pickle", "rb") as a:
@@ -216,7 +218,7 @@ class PEVRP:
         size = sys.getsizeof(self.route_table)
         list_sizes = [sys.getsizeof(lst) for lst in self.route_table.values()]
         total_size = asizeof.asizeof(self.route_table)
-        print("Size of dictionary:", total_size, "bytes")
+        # print("Size of dictionary:", total_size, "bytes")
         # node, arrive, leave, arrive_soc, leave_soc, charge_time, wait_time
         open_paths[0]["path"].append("{}-{}-{}-{}-{}-{}-{}".format(target, None, None, 1, 1, 0, 0))
         open_paths[0]["start"] = upper_bound
@@ -448,8 +450,16 @@ class PEVRP:
 if __name__ == '__main__':
     threads = 1
     threshold = 10
-    look_ahead = 4
+    look_ahead = 1
     outlet_count = 1
+    opts, args = getopt.getopt(sys.argv[1:], "-l:-t:-n:", ["lookahead=", "threshold=", "num="])
+    for opt, arg in opts:
+        if opt in ("-l", "--lookahead"):
+            look_ahead = int(arg)
+        elif opt in ("-t", "--threshold"):
+            threshold = int(arg)
+        elif opt in ("-n", "--num"):
+            threads = int(arg)
     max_receive_power_list = [50, 60, 75, 80, 100]
 
     with open("./requests_dynamic_10_percent_with_bucket.pkl", "rb") as f:
