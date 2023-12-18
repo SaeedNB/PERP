@@ -10,3 +10,5 @@ python3 PEVRP.py -l 10 -t 10 -n 1
 -t: defines the value of threshold
 
 -n: defines the number of used threads
+
+The above command runs the code with 10 lookahead, 10 minutes for ε and using 1 thread for its calculate. 
