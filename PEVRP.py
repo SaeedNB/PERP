@@ -9,7 +9,6 @@ from search_array_jit import find_first_occurrence
 from pympler import asizeof
 import sys, getopt
 
-#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
 class PEVRP:
     def __init__(self):
         with open("../../graphs/new_graph_below_175_upper_0_with_points_whole_graph.pickle", "rb") as a:
