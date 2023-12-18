@@ -5,8 +5,8 @@ This is the implementation using Python 3.9. In order to run the code, use the f
 python3 PEVRP.py -l 10 -t 10 -n 1
 ```
 
--l: for number of look aheads
+-l: defines number of look aheads
 
--t: for identifying the value of threshold
+-t: defines the value of threshold
 
--n: for identying number of threads
+-n: defines the number of used threads
